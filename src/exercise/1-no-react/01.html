@@ -4,18 +4,45 @@
     {{> head}}
   </head>
   <body>
-    <!-- 🦁 crée une div avec l'id "root" -->
-    <!-- ℹ️ presque toutes les app React ont une "root".
-         C'est le premier nœud de notre arbre. -->
+    <div id="root"></div>
   </body>
 
   <script>
-    // 🦁 crée une div
+    const greetings = document.createElement('div');
+    greetings.textContent = 'Hello 👋';
 
-    // 🦁 ajoute le text "Hello 👋" dedans
+    const rootEl = document.querySelector('#root');
 
-    // 🦁 récupère l'élément "root"
+    rootEl.appendChild(greetings);
 
-    // 🦁 ajoute la div dans l'élément "root"
+    // Extra 2
+    greetings.addEventListener('click', () =>
+      alert('Tu as cliqué sur Hello ! !')
+    );
+
+    // Extra 3
+    const Counter = (initialValue) => {
+      const button = document.createElement('button');
+      button.textContent = initialValue;
+      button.addEventListener(
+        'click',
+        () => (button.textContent = Number(button.textContent) + 1)
+      );
+      return button;
+    };
+
+    rootEl.appendChild(Counter(0));
+    rootEl.appendChild(Counter(10));
+
+    // Extra 4
+    const fruits = ['banana', 'apple', 'strawberry'];
+
+    const listEl = document.createElement('ul');
+    fruits.map((fruit) => {
+      const fruitEl = document.createElement('li');
+      fruitEl.textContent = fruit;
+      listEl.appendChild(fruitEl);
+    });
+    rootEl.appendChild(listEl);
   </script>
 </html>
