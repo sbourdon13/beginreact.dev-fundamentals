@@ -23,7 +23,7 @@
     // Extra 3
     const Counter = (initialValue) => {
       const button = document.createElement('button');
-      button.textContent = initialValue;
+      button.textContent = Number(initialValue) || 0;
       button.addEventListener(
         'click',
         () => (button.textContent = Number(button.textContent) + 1)
@@ -33,6 +33,7 @@
 
     rootEl.appendChild(Counter(0));
     rootEl.appendChild(Counter(10));
+    rootEl.appendChild(Counter('hello'));
 
     // Extra 4
     const fruits = ['banana', 'apple', 'strawberry'];
